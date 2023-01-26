@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 def pascal_triangle(n):
+    """
+    program to returns a 2d list
+    to represent pascal's triangle
+    """
     triangle = []
     last = []
 
