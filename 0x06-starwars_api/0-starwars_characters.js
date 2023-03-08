@@ -9,19 +9,27 @@
 const request = require('request');
 const id = process.argv[2];
 const url = 'https://swapi-api.hbtn.io/api/films/';
-request(url + id, function (err, res, body) {
-  if (err) {
-    console.log(err);
-  }
-  const data = JSON.parse(body);
-  const character = data.characters;
-  for (const i of character) {
-    request(i, function (err, res, body1) {
+
+function returnPromise (link) {
+  return new Promise(function (resolve, reject) {
+    request(link, function (err, res, body) {
       if (err) {
         console.log(err);
+      } else {
+        const data = JSON.parse(body);
+        resolve(data);
       }
-      const data1 = JSON.parse(body1);
-      console.log(data1.name);
     });
+  });
+}
+
+async function printCharacters () {
+  const films = await returnPromise(url + id);
+
+  for (const link of films.characters) {
+    const data = await returnPromise(link);
+    console.log(data.name);
   }
-});
+}
+
+printCharacters();
