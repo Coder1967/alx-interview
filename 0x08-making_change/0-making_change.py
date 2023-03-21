@@ -1,7 +1,15 @@
 #!/usr/bin/python3
+"""
+determines the fewest number of coins
+needed to meet a given amount total
+"""
 
 
 def makeChange(coins, total) -> int:
+    """
+    determines the fewest number of coins
+    needed to meet a given amount total
+    """
     if total <= 0:
         return 0
     count: int = 0
@@ -21,6 +29,9 @@ def makeChange(coins, total) -> int:
 
 
 def maximum(coins, waste_coins) -> int:
+    """
+    finds the max coin not in waste_coins
+    """
     max_coin: int = coins[0]
 
     for coin in coins:
