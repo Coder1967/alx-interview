@@ -6,11 +6,8 @@ Island Perimeter
 
 def island_perimeter(grid):
     """
-    grid is a list of list of integers:
-    Each cell is square, with a side length of 1
-    Cells are connected horizontally/vertically (not diagonally).
-    grid is rectangular, with its width and height not exceeding 100
-    return: the perimeter of grid
+    check the readme to see the problem the function
+    is for
     """
     if grid is None or len(grid) == 0:
         return
