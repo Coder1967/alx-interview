@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """
-Island Perimeter
+island perimeter
 """
 
 
 def island_perimeter(grid):
     """
     check the readme to see the problem the function
-    is for
+    is meant to solve
     """
     if grid is None or len(grid) == 0:
         return
