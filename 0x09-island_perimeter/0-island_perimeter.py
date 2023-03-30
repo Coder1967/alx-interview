@@ -1,13 +1,12 @@
 #!/usr/bin/python3
 """
-island perimeter
+alx question
 """
 
 
 def island_perimeter(grid):
     """
-    check the readme to see the problem the function
-    is meant to solve
+    check the readme
     """
     if grid is None or len(grid) == 0:
         return
