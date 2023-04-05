@@ -15,26 +15,7 @@ def num_gen(num):
     while i <= num:
         nums.append(i)
         i += 1
-    nums.reverse()
     return nums
-
-
-def remove_multiples(num, nums):
-    '''
-    removes an int(num) and all its multiples
-    from a list(nums).
-    '''
-    i = 0
-    nums_length = len(nums)
-    new_list = []
-
-    while i < len(nums):
-        if nums[i] == 1:
-            new_list.append(nums[i])
-        if num % nums[i] != 0 and nums[i] % num != 0:
-            new_list.append(nums[i])
-        i += 1
-    return new_list
 
 
 def prime_filter(nums):
@@ -48,6 +29,7 @@ def prime_filter(nums):
         elif num % 2 != 0 and num % 3 != 0 and num % 5 != 0 and num % 7 != 0:
             new_nums.append(num)
     return new_nums
+
 
 def isWinner(x, nums) -> str:
     '''
