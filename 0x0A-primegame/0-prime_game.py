@@ -19,23 +19,6 @@ def num_gen(num):
     return nums
 
 
-def filter_prime(nums):
-    '''
-    takes a list of integers as argument and
-    removes all the non-prime numbers(excluding 1)
-    and returns the new list.
-    '''
-    prime_nums = [2, 3, 5, 7]
-    new_nums = []
-
-    for num in nums:
-        if num in prime_nums:
-            new_nums.append(num)
-        if num % 2 != 0 and num % 3 != 0 and num % 5 != 0 and num % 7 != 0:
-            new_nums.append(num)
-    return new_nums
-
-
 def remove_multiples(num, nums):
     '''
     removes an int(num) and all its multiples
@@ -62,28 +45,34 @@ def isWinner(x, nums) -> str:
     player_wins = {'Maria': 0, 'Ben': 0}
 
     for i in range(1, (x + 1)):
-        players = {'Maria': False, 'Ben': False}
         j = 0
-        numbers = filter_prime(num_gen(nums[i - 1]))
+        players = {'Maria': False, 'Ben': False}
+        tracker = 1
+        numbers = num_gen(nums[i - 1])
         numbers_length = len(numbers)
         while j < numbers_length:
             try:
-                if numbers[j] == 1 and (j + 1) % 2 != 0:
-                    players['Maria'] = True
-                    players['Ben'] = False
-                else:
-                    players['Ben'] = True
+                if numbers[j] == 1 and tracker % 2 != 0:
                     players['Maria'] = False
+                    players['Ben'] = True
+                    break
+                elif numbers[j] == 1 and tracker % 2 == 0:
+                    players['Ben'] = False
+                    players['Maria'] = True
+                    break
                 numbers = remove_multiples(numbers[j], numbers)
-                if (j + 1) % 2 != 0:
+                if tracker % 2 != 0:
                     players['Maria'] = True
                     players['Ben'] = False
-                elif (j + 1) % 2 == 0:
+                elif tracker % 2 == 0:
                     players['Ben'] = True
                     players['Maria'] = False
+                j -= numbers_length - len(numbers)
+                numbers_length = len(numbers)
+                tracker += 1
             except IndexError:
                 pass
-            j += 1
+            j = 0
         if players['Maria'] is True:
             player_wins['Maria'] += 1
         elif players['Ben'] is True:
