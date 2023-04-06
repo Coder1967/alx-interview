@@ -3,32 +3,17 @@
 solution for Alx interview question.
 '''
 
+def prime_counter(num):
+    count = 0
 
-def num_gen(num):
-    '''
-    generates a list of integers
-    >= 1 and <= num(passed arg).
-    '''
-    nums = []
-    i = 1
-
-    while i <= num:
-        nums.append(i)
-        i += 1
-    return nums
-
-
-def prime_filter(nums):
-    new_nums = []
-
-    for num in nums:
+    for num in range(1, num + 1):
         if num == 1:
             continue
         if num == 2 or num == 3 or num == 5 or num == 7:
-            new_nums.append(num)
+            count += 1
         elif num % 2 != 0 and num % 3 != 0 and num % 5 != 0 and num % 7 != 0:
-            new_nums.append(num)
-    return new_nums
+            count + 1
+    return count
 
 
 def isWinner(x, nums) -> str:
@@ -41,12 +26,11 @@ def isWinner(x, nums) -> str:
     player_wins = {'Maria': 0, 'Ben': 0}
 
     for num in nums:
-        numbers = num_gen(num)
-        numbers = prime_filter(numbers)
+        count = prime_counter(num)
 
-        if len(numbers) % 2 == 0:
+        if count % 2 == 0:
             player_wins['Ben'] += 1
-        elif len(numbers) % 2 != 0:
+        elif count % 2 != 0:
             player_wins['Maria'] += 1
 
     if player_wins['Maria'] > player_wins['Ben']:
