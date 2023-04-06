@@ -3,6 +3,7 @@
 solution for Alx interview question.
 '''
 
+
 def prime_counter(num):
     count = 0
 
